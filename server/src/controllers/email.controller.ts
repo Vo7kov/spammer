@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import { emailService } from "../services/email.service";
 
 const send = async (req: Request, res: Response) => {
-  const { email, html } = req.body;
+  const { email, text } = req.body;
 
-  await emailService.send({ email, html });
+  await emailService.send({ email, html: text });
 
   res.send(200);
 };

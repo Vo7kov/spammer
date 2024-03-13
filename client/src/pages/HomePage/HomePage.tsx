@@ -51,7 +51,7 @@ export const HomePage: React.FC = React.memo(() => {
                 <td>{user.firstName}</td>
                 <td>{user.surName}</td>
                 <td>
-                  <LinkContainer to={`/users/send/${user.id}`}>
+                  <LinkContainer to={`/users/send/${user.email}`}>
                     <Nav.Link className="text-primary border border-primary text-center py-3 rounded">
                       Відправити новий лист
                     </Nav.Link>
