@@ -4,3 +4,4 @@ import { userController } from "../controllers/user.controller";
 export const userRoute = express.Router();
 
 userRoute.get("/users", userController.getAll);
+userRoute.delete("/users/:userId", userController.deleteUser);

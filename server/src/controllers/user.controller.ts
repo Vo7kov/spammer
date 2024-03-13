@@ -7,6 +7,19 @@ const getAll = async (req: Request, res: Response) => {
   res.send(users);
 };
 
+const deleteUser = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+
+  await prisma.user.delete({
+    where: {
+      id: userId,
+    },
+  });
+
+  res.send(200);
+};
+
 export const userController = {
   getAll,
+  deleteUser,
 };

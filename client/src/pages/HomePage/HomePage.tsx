@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Nav, Table } from 'react-bootstrap';
+import { Button, Nav, Table } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { createClient } from '../../shared/http/client.';
@@ -11,10 +11,15 @@ export const HomePage: React.FC = React.memo(() => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    client
-      .get<User[]>('http://localhost:8000/users')
-      .then((res) => setUsers(res.data));
+    client.get<User[]>('/users').then((res) => setUsers(res.data));
   }, []);
+
+  const handleDelete = (userId: string) => {
+    client.delete(`/users/${userId}`).then(() => {
+      const filteredUsers = users.filter((user) => user.id !== userId);
+      setUsers(filteredUsers);
+    });
+  };
 
   return (
     <Table striped bordered hover responsive>
@@ -51,11 +56,13 @@ export const HomePage: React.FC = React.memo(() => {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer className="mt-3" to={`/users/send/${user.id}`}>
-                  <Nav.Link className="text-danger border border-danger text-center py-3 rounded">
-                    Видалити
-                  </Nav.Link>
-                </LinkContainer>
+                <Button
+                  className="w-100 mt-3"
+                  variant="danger"
+                  onClick={() => handleDelete(user.id)}
+                >
+                  Видалити
+                </Button>
               </td>
             </tr>
           ))}
