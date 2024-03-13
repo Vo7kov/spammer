@@ -19,7 +19,23 @@ const deleteUser = async (req: Request, res: Response) => {
   res.send(200);
 };
 
+const create = async (req: Request, res: Response) => {
+  const { email, lastName, firstName, surName } = req.body;
+
+  const user = await prisma.user.create({
+    data: {
+      email,
+      lastName,
+      firstName,
+      surName,
+    },
+  });
+
+  res.send(user);
+};
+
 export const userController = {
   getAll,
   deleteUser,
+  create,
 };
