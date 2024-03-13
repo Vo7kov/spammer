@@ -34,8 +34,27 @@ const create = async (req: Request, res: Response) => {
   res.send(user);
 };
 
+const update = async (req: Request, res: Response) => {
+  const { email, lastName, firstName, surName, id } = req.body;
+
+  const user = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      email,
+      lastName,
+      firstName,
+      surName,
+    },
+  });
+
+  res.send(user);
+};
+
 export const userController = {
   getAll,
   deleteUser,
   create,
+  update,
 };

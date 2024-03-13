@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { App } from './App';
-import { CreateUser, HomePage } from './pages';
+import { CreateUser, HomePage, UpdateUser } from './pages';
 
 export const Root: React.FC = React.memo(() => {
   return (
@@ -14,6 +14,7 @@ export const Root: React.FC = React.memo(() => {
 
           <Route path="users">
             <Route path="new" element={<CreateUser />} />
+            <Route path="edit/:userId" element={<UpdateUser />} />
           </Route>
         </Route>
       </Routes>
