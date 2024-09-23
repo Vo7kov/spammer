@@ -25,7 +25,7 @@ export const HomePage: React.FC = React.memo(() => {
     <div>
       <LinkContainer to="/users/new">
         <Nav.Link className="text-warning border border-warning text-center py-3 rounded">
-          Створити нового користувача
+          Create new user
         </Nav.Link>
       </LinkContainer>
 
@@ -34,10 +34,10 @@ export const HomePage: React.FC = React.memo(() => {
           <tr>
             <th>Id</th>
             <th>Email</th>
-            <th>Прізвище</th>
-            <th>Ім'я</th>
-            <th>По батькові</th>
-            <th>Дії</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -53,13 +53,13 @@ export const HomePage: React.FC = React.memo(() => {
                 <td>
                   <LinkContainer to={`/users/send/${user.email}`}>
                     <Nav.Link className="text-primary border border-primary text-center py-3 rounded">
-                      Відправити новий лист
+                      Send new email
                     </Nav.Link>
                   </LinkContainer>
 
                   <LinkContainer className="mt-3" to={`/users/edit/${user.id}`}>
                     <Nav.Link className="text-success border border-success text-center py-3 rounded">
-                      Редагувати
+                      Edit
                     </Nav.Link>
                   </LinkContainer>
 
@@ -68,7 +68,7 @@ export const HomePage: React.FC = React.memo(() => {
                     variant="danger"
                     onClick={() => handleDelete(user.id)}
                   >
-                    Видалити
+                    Delete
                   </Button>
                 </td>
               </tr>

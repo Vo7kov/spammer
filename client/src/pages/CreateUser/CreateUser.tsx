@@ -10,22 +10,22 @@ import { createClient } from '../../shared/http/client.';
 
 const schema = z.object({
   lastName: z.string().trim().min(1, {
-    message: 'Вказати прізвище',
+    message: 'Please provide your last name',
   }),
   firstName: z.string().trim().min(1, {
-    message: 'Вказати Ім`я',
+    message: 'Please provide your first name',
   }),
   surName: z.string().trim().min(1, {
-    message: 'Вказати По батькові',
+    message: 'Please provide your middle name',
   }),
   email: z
     .string()
     .trim()
     .min(1, {
-      message: 'Вказати По батькові',
+      message: 'Please provide your email',
     })
     .email({
-      message: 'Некоректний формат',
+      message: 'Invalid email format',
     }),
 });
 
@@ -62,7 +62,7 @@ export const CreateUser: React.FC = React.memo(() => {
         <Form.Control
           {...register('lastName')}
           type="text"
-          placeholder="Прізвище"
+          placeholder="Last Name"
         />
       </Form.Group>
 
@@ -70,7 +70,7 @@ export const CreateUser: React.FC = React.memo(() => {
         <Form.Control
           {...register('firstName')}
           type="text"
-          placeholder="Ім'я"
+          placeholder="First Name"
         />
       </Form.Group>
 
@@ -78,12 +78,12 @@ export const CreateUser: React.FC = React.memo(() => {
         <Form.Control
           {...register('surName')}
           type="text"
-          placeholder="По батькові"
+          placeholder="Middle Name"
         />
       </Form.Group>
 
       <Form.Group className="mt-3" controlId="email">
-        <Form.Control {...register('email')} type="text" placeholder="Пошта" />
+        <Form.Control {...register('email')} type="text" placeholder="Email" />
       </Form.Group>
 
       <Button variant="primary" type="submit">

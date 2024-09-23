@@ -10,7 +10,7 @@ import { createClient } from '../../shared/http/client.';
 
 const schema = z.object({
   text: z.string().trim().min(1, {
-    message: 'Вказати текст',
+    message: 'Please provide the text',
   }),
 });
 
@@ -19,12 +19,7 @@ export const SendEmail: React.FC = React.memo(() => {
   const navigate = useNavigate();
   const { email } = useParams();
 
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<z.infer<typeof schema>>({
+  const { control, handleSubmit, setValue } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
   });
 
@@ -39,8 +34,6 @@ export const SendEmail: React.FC = React.memo(() => {
       .then(() => navigate('/'));
   };
 
-  console.log(errors);
-
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Controller
@@ -52,7 +45,7 @@ export const SendEmail: React.FC = React.memo(() => {
               value={field.value}
               as="textarea"
               type="text"
-              placeholder="Текст"
+              placeholder="Text"
               onChange={(e) => field.onChange(e.target.value)}
             />
           </Form.Group>
@@ -63,9 +56,9 @@ export const SendEmail: React.FC = React.memo(() => {
         className="mt-3"
         onChange={(e) => setValue('text', e.target.value)}
       >
-        <option value="Перша">Перша</option>
-        <option value="Друга">Друга</option>
-        <option value="Третя">Третя</option>
+        <option value="First">First</option>
+        <option value="Second">Second</option>
+        <option value="Third">Third</option>
       </Form.Select>
 
       <Button className="mt-4" variant="primary" type="submit">

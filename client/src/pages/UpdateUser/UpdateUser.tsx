@@ -38,7 +38,6 @@ export const UpdateUser: React.FC = React.memo(() => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
   });
@@ -56,8 +55,6 @@ export const UpdateUser: React.FC = React.memo(() => {
       })
       .then(() => navigate('/'));
   };
-
-  console.log(errors);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
