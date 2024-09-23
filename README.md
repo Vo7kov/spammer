@@ -1,6 +1,6 @@
 ## Backend:
 
-Configure everything necessary in the .env file, using .env.example as a reference. For SMTP_USER, create a dummy email and enable two-factor authentication. Follow this link for further instructions: https://docs.google.com/document/d/11_4joamBWNDj3ebfa2_8opw0KRSkR8DoDWwMM-bdYzA/edit?usp=sharing
+Configure everything necessary in the `.env` file, using `.env.example` as a reference. For `SMTP_USER`, create a dummy email and enable two-factor authentication. Follow this link for further instructions: https://docs.google.com/document/d/11_4joamBWNDj3ebfa2_8opw0KRSkR8DoDWwMM-bdYzA/edit?usp=sharing
 
 After that:
 
